@@ -12,31 +12,34 @@ class Matrix
 			{
 				myArray[x][y] = newValue;
 			}
+		}
 	public void setRow(int x, String newValues)
 		{
-			int numberCount = 0
-			for (a = 0; a < newValues.length; a++)
+			int[] finalvalues;
+			int numberCount = 0;
+			for (int a = 0; a < newValues.length; a++)
 				{
 					if (newValues.charAt(a).isNumber)
 					numberCount++;
 				}
-			String[] numbers = new int[numberCount]
-			int counter = 0
-			for (a = 0; a < newValues.length; a++)
+			String[] numbers = new int[numberCount];
+			int counter = 0;
+			finalValues = new int[numbers];
+			for (int a = 0; a < newValues.length; a++)
 					{
 						if (newValues.charAt(a).isNumber)
 							{
 								numbers[counter] = newValues.charAt(a);
 								char char1 = numbers.charAt(counter);
 								int int1 = (int) char1;
-								finalValues[counter] = int1
+								finalValues[counter] = int1;
 								counter++;
 							}
 					}
 
 			if ((x < myArray.length && x > 0) && (finalValues.length == myArray[0].length))
 				{
-					myArray.[x] = finalValues
+					myArray[x] = finalValues;
 				}
 
 		}
