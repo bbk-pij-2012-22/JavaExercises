@@ -1,3 +1,4 @@
+
 class Matrix
 {
 	int[][] myArray;
@@ -13,34 +14,126 @@ class Matrix
 				myArray[x][y] = newValue;
 			}
 		}
+		
+		
+		
+		
 	public void setRow(int x, String newValues)
 		{
-			int[] finalvalues;
-			int numberCount = 0;
-			for (int a = 0; a < newValues.length; a++)
-				{
-					if (newValues.charAt(a).isNumber)
-					numberCount++;
-				}
-			String[] numbers = new int[numberCount];
 			int counter = 0;
-			finalValues = new int[numbers];
-			for (int a = 0; a < newValues.length; a++)
-					{
-						if (newValues.charAt(a).isNumber)
-							{
-								numbers[counter] = newValues.charAt(a);
-								char char1 = numbers.charAt(counter);
-								int int1 = (int) char1;
-								finalValues[counter] = int1;
-								counter++;
-							}
-					}
-
-			if ((x < myArray.length && x > 0) && (finalValues.length == myArray[0].length))
+			for (int a = 0; a < newValues.length(); a++)
 				{
-					myArray[x] = finalValues;
+					if (Character.isDigit(newValues.charAt(a)) == true)
+						{
+							counter++;
+						}
 				}
-
+			int[] onlyValues = new int[counter];
+			for (int a = 0; a < newValues.length(); a++)
+				{
+					counter = 0;
+					if (Character.isDigit(newValues.charAt(a)))
+						{
+							char h = newValues.charAt(a);
+							int b = Character.getNumericValue(h);
+							onlyValues[counter] = b;
+							counter++;
+						}
+				}		
+			if ((x < myArray.length && x > 0) && (onlyValues.length == myArray[0].length))
+				{
+					myArray[x] = onlyValues;
+				}
+		}
+		
+		
+		
+	public void setColumn(int x, String newValues)
+		{
+			int counter = 0;
+			for (int a = 0; a < newValues.length(); a++)
+				{
+					if (Character.isDigit(newValues.charAt(a)) == true)
+						{
+							counter++;
+						}
+				}
+			int[] onlyValues = new int[counter];
+			for (int a = 0; a < newValues.length(); a++)
+				{
+					counter = 0;
+					if (Character.isDigit(newValues.charAt(a)))
+						{
+							char h = newValues.charAt(a);
+							int b = Character.getNumericValue(h);
+							onlyValues[counter] = b;
+							counter++;
+						}
+				}		
+			if ((x < myArray[0].length && x > 0) && (onlyValues.length == myArray.length))
+				{
+					for (int i = 0; i < onlyValues.length; i++)
+						{
+							myArray[i][x] = onlyValues[i];
+						}
+				}
+		}
+		
+		
+	public String toString()
+		{
+			int totalNums = myArray.length * myArray[0].length;
+			String[] resultString = new String[(totalNums * 2 - 1) + 2];
+			resultString[0] = "[";
+			int stringPos = 1;
+			for (int a = 0; a < myArray.length; a++)
+				{
+					if (stringPos > 1)
+						{
+							resultString[stringPos] = ";";
+							stringPos++;
+						}
+						for (int i = 0; i < myArray[0].length; i++)
+							{
+								int vehicle = myArray[a][i];
+								String str = Integer.toString(vehicle);
+								resultString[stringPos] = str;
+								stringPos++;
+								resultString[stringPos] = ",";
+								stringPos++;
+							}
+				}
+			String retResult = Arrays.toString(resultString);
+			return retResult;
+	
+			
 		}
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
